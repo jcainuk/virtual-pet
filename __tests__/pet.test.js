@@ -78,3 +78,40 @@ describe('constructor', () => {
       expect(pet.hunger).toEqual(0);
     });
   });
+
+  describe('checkUp', () => {
+    it('returns hungry and need a walk message when fitness is less than or equal to 3 and hunger is more than or equal to 5', () => {
+      const pet = new Pet('fido');
+      pet.fitness = 3;
+      pet.hunger = 5;
+      pet.checkUp();
+  
+      expect(pet.checkUp()).toEqual('I am hungry AND I need a walk');
+    });
+
+    it('returns need a walk message when fitness is less than or equal to 3', () => {
+      const pet = new Pet('fido');
+  
+      pet.fitness = 2;
+      pet.checkUp();
+  
+      expect(pet.checkUp()).toEqual('I need a walk');
+    });
+    it('returns I am hungry message when hunger is more than or equal to 5', () => {
+      const pet = new Pet('fido');
+  
+      pet.hunger = 6;
+      pet.checkUp();
+  
+      expect(pet.checkUp()).toEqual('I am hungry');
+    });
+    it('returns I feel great message when hunger is less than 5 and fitness is more than 3', () => {
+      const pet = new Pet('fido');
+  
+      pet.hunger = 4;
+      pet.fitness = 4;
+      pet.checkUp();
+  
+      expect(pet.checkUp()).toEqual('I feel great!');
+    });
+  });
