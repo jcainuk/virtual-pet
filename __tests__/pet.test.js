@@ -146,3 +146,15 @@ describe('constructor', () => {
       expect(() => pet.checkUp()).toThrow('Your pet is no longer alive :(');
     });
   });
+
+  describe('haveBaby', () => {
+    it('should let the pet have a baby and add it to its children array', () => {
+      const pet = new Pet('Fido');
+  
+      pet.haveBaby('Tiger')
+  
+      expect(pet.children).toHaveLength(1);
+      expect(pet.children[0]).toHaveProperty('name', 'Tiger')
+    });
+  });
+    

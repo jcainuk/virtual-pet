@@ -6,6 +6,7 @@ function Pet(name) {
     this.age = 0;
     this.hunger = 0;
     this.fitness = 10;
+    this.children = [];
 };
 
 Pet.prototype = {
@@ -59,6 +60,16 @@ Pet.prototype.checkUp = function () {
 
 return 'I feel great!';
 }
+
+
+Pet.prototype.haveBaby = function (name) {
+ 
+    if(!this.isAlive) {
+      throw new Error(`${this.name} ${deadPetMessage}`);
+   }
+   this.children.push(new Pet(name));
+}	   
+  
 
 
  module.exports = Pet;
